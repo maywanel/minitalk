@@ -18,17 +18,20 @@ void	fail(void)
 	exit(EXIT_FAILURE);
 }
 
-void	add_null(int *binary)
+void	add_null(int **binary, int i)
 {
 	int	j;
 
-	binary = malloc(sizeof(int) * 8);
+	binary[i] = malloc(sizeof(int) * 8);
+	if (!binary[i])
+		exit(EXIT_FAILURE);
 	j = 0;
 	while (j < 8)
 	{
-		binary[j] = 0;
+		binary[i][j] = 0;
 		j++;
 	}
+	binary[i + 1] = NULL;
 }
 
 int	**char_to_binary(char *s)
@@ -56,11 +59,11 @@ int	**char_to_binary(char *s)
 		}
 		i++;
 	}
-	add_null(binary[i]);
+	add_null(binary, i);
 	return (binary);
 }
 
-static void	send_signal(int **ptr, int pid)
+void	send_signal(int **ptr, int pid)
 {
 	int	byte;
 	int	bit;
@@ -72,8 +75,9 @@ static void	send_signal(int **ptr, int pid)
 		while (bit < 8)
 		{
 			if (ptr[byte][bit] == 1)
-				if (kill(pid, SIGUSR1) == -1)
+			{	if (kill(pid, SIGUSR1) == -1)
 					fail();
+			}
 			else
 				if (kill(pid, SIGUSR2) == -1)
 					fail();

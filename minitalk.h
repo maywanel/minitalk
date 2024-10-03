@@ -6,7 +6,7 @@
 /*   By: moel-mes <moel.mes.1337@gamil.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:36:14 by moel-mes          #+#    #+#             */
-/*   Updated: 2024/10/02 17:36:14 by moel-mes         ###   ########.fr       */
+/*   Updated: 2024/10/03 16:51:08 by moel-mes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int		ft_atoi(const char *s);
 int		ft_strlen(char *s);
 void	ft_putchar(const char c);
 void	ft_putnbr(int n);
+void ft_putstr(const char *s);
 
 #endif
