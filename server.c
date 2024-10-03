@@ -15,28 +15,29 @@
 int	binary_to_char(int *binary)
 {
 	int	dec_value;
-	int bits = 0;
+	int	bits;
 
+	bits = 0;
 	while (bits < 8)
 	{
 		dec_value = (dec_value << 1) + binary[bits];
-        bits++;
+		bits++;
 	}
 	return (dec_value);
 }
 
-int check_null(int *binary)
+int	check_null(int *binary)
 {
-	int i;
+	int	i;
 
-    i = 0;
-    while (i < 8)
-    {
-        if (binary[i] == 1)
-            return (0);
-        i++;
-    }
-    return (1);
+	i = 0;
+	while (i < 8)
+	{
+		if (binary[i] == 1)
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 void	signal_handler(int sig)

@@ -75,7 +75,8 @@ void	send_signal(int **ptr, int pid)
 		while (bit < 8)
 		{
 			if (ptr[byte][bit] == 1)
-			{	if (kill(pid, SIGUSR1) == -1)
+			{
+				if (kill(pid, SIGUSR1) == -1)
 					fail();
 			}
 			else
