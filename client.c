@@ -37,29 +37,26 @@ void	add_null(int **binary, int i)
 int	**char_to_binary(char *s)
 {
 	int	**binary;
-	int	i;
+	int	byte;
 	int	j;
-	int	temp;
+	int	bit;
 
-	i = 0;
+	byte = 0;
 	binary = malloc(sizeof(int *) * (ft_strlen(s) + 2));
 	if (!binary)
 		exit(EXIT_FAILURE);
-	while (s[i])
+	while (s[byte])
 	{
-		binary[i] = malloc(sizeof(int) * 8);
-		if (!binary[i])
+		binary[byte] = malloc(sizeof(int) * 8);
+		if (!binary[byte])
 			exit(EXIT_FAILURE);
-		temp = s[i];
 		j = 8;
+		bit = 0;
 		while (j-- >= 0)
-		{
-			binary[i][j] = temp % 2;
-			temp /= 2;
-		}
-		i++;
+			binary[byte][bit++] = (s[byte] >> j) & 1;
+		byte++;
 	}
-	add_null(binary, i);
+	add_null(binary, byte);
 	return (binary);
 }
 
