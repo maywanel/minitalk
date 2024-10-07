@@ -72,9 +72,6 @@ void	send_signal(int **ptr, int pid)
 	while (ptr[byte])
 	{
 		bit = 0;
-		for (int i = 0; i < 8; i++)
-			ft_putnbr(ptr[byte][i]);
-		ft_putchar('\n');
 		while (bit < 8)
 		{
 			if (ptr[byte][bit] == 1)
